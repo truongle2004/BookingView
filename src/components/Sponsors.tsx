@@ -2,7 +2,6 @@ import Image from 'next/image';
 import arcjetLogo from '@/public/assets/images/arcjet-light.svg';
 import checklyLogo from '@/public/assets/images/checkly-logo-light.png';
 import clerkLogo from '@/public/assets/images/clerk-logo-dark.png';
-import crowdinLogo from '@/public/assets/images/crowdin-dark.png';
 import nextJsBoilerplateLogo from '@/public/assets/images/nextjs-boilerplate-saas.png';
 import posthogLogo from '@/public/assets/images/posthog-logo.svg';
 
@@ -25,11 +24,6 @@ export const Sponsors = () => (
         <td className="border-2 border-gray-300 p-3">
           <a aria-label="Visit Arcjet" href="https://launch.arcjet.com/Q6eLbRE">
             <Image src={arcjetLogo} alt="Arcjet" width={220} />
-          </a>
-        </td>
-        <td className="border-2 border-gray-300 p-3">
-          <a aria-label="Visit Crowdin" href="https://l.crowdin.com/next-js">
-            <Image src={crowdinLogo} alt="Crowdin" width={220} />
           </a>
         </td>
       </tr>
