@@ -29,7 +29,9 @@ test.describe('I18n', () => {
 
       await page.goto('/fr/about');
 
-      await expect(page.getByText('Bienvenue sur notre page À propos', { exact: false })).toBeVisible();
+      await expect(
+        page.getByText('Bienvenue sur notre page À propos', { exact: false }),
+      ).toBeVisible();
     });
   });
 });
