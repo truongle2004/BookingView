@@ -2,22 +2,20 @@ import { expect, test } from '@playwright/test';
 
 test.describe('I18n', () => {
   test.describe('Language Switching', () => {
-    test('should switch language from English to French using dropdown and verify text on the homepage', async ({
-      page,
-    }) => {
+    test('switches the homepage language using URL', async ({ page }) => {
       await page.goto('/');
 
       await expect(
         page.getByRole('heading', {
-          name: 'Boilerplate Code for Your Next.js Project with Tailwind CSS',
+          name: 'Find your next stay',
         }),
       ).toBeVisible();
 
-      await page.getByLabel('Change language').selectOption('fr');
+      await page.goto('/fr');
 
       await expect(
         page.getByRole('heading', {
-          name: 'Code de démarrage pour Next.js avec Tailwind CSS',
+          name: 'Trouvez votre prochain séjour',
         }),
       ).toBeVisible();
     });

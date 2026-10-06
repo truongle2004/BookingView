@@ -9,34 +9,28 @@ import { expect, test } from '@playwright/test';
 
 test.describe('Sanity', () => {
   test.describe('Static pages', () => {
-    test('should display the homepage', async ({ page }) => {
+    test('displays the homepage', async ({ page }) => {
       await page.goto('/');
 
       await expect(
         page.getByRole('heading', {
-          name: 'Boilerplate Code for Your Next.js Project with Tailwind CSS',
+          name: 'Find your next stay',
         }),
       ).toBeVisible();
     });
 
-    test('should navigate to the about page', async ({ page }) => {
+    test('shows the property search', async ({ page }) => {
       await page.goto('/');
 
-      await page.getByRole('link', { name: 'About' }).click();
-
-      await expect(page).toHaveURL(/about$/u);
-
-      await expect(page.getByText('Welcome to our About page', { exact: false })).toBeVisible();
+      await expect(page.getByPlaceholder('Where are you going?')).toBeVisible();
+      await expect(page.getByRole('button', { name: 'Search' })).toBeVisible();
     });
 
-    test('should navigate to the portfolio page', async ({ page }) => {
+    test('shows trending destinations', async ({ page }) => {
       await page.goto('/');
 
-      await page.getByRole('link', { name: 'Portfolio' }).click();
-
-      await expect(page).toHaveURL(/portfolio$/u);
-
-      await expect(page.locator('main').getByRole('link', { name: /^Portfolio/u })).toHaveCount(6);
+      await expect(page.getByRole('heading', { name: 'Trending destinations' })).toBeVisible();
+      await expect(page.getByRole('link', { name: 'Paris' })).toBeVisible();
     });
   });
 });

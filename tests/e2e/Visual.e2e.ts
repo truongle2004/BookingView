@@ -2,12 +2,12 @@ import { expect, takeSnapshot, test } from '@chromatic-com/playwright';
 
 test.describe('Visual testing', () => {
   test.describe('Static pages', () => {
-    test('should take screenshot of the homepage', async ({ page }, testInfo) => {
+    test('captures the homepage', async ({ page }, testInfo) => {
       await page.goto('/');
 
       await expect(
         page.getByRole('heading', {
-          name: 'Boilerplate Code for Your Next.js Project with Tailwind CSS',
+          name: 'Find your next stay',
         }),
       ).toBeVisible();
 
@@ -38,12 +38,12 @@ test.describe('Visual testing', () => {
       await takeSnapshot(page, testInfo);
     });
 
-    test('should take screenshot of the French homepage', async ({ page }, testInfo) => {
+    test('captures the French homepage', async ({ page }, testInfo) => {
       await page.goto('/fr');
 
       await expect(
         page.getByRole('heading', {
-          name: 'Code de démarrage pour Next.js avec Tailwind CSS',
+          name: 'Trouvez votre prochain séjour',
         }),
       ).toBeVisible();
 
