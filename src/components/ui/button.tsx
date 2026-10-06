@@ -23,22 +23,40 @@ const buttonVariants = cva(
   },
 );
 
-export function Button(props: React.ComponentProps<'button'> & VariantProps<typeof buttonVariants> & { asChild?: boolean }) {
-  const className = cn(buttonVariants({ variant: props.variant, size: props.size }), props.className);
+export function Button(
+  props: React.ComponentProps<'button'> &
+    VariantProps<typeof buttonVariants> & { asChild?: boolean },
+) {
+  const className = cn(
+    buttonVariants({ variant: props.variant, size: props.size }),
+    props.className,
+  );
 
   if (props.asChild) {
     return <Slot className={className}>{props.children}</Slot>;
   }
 
   if (props.type === 'submit') {
-    return <button type="submit" className={className} disabled={props.disabled}>{props.children}</button>;
+    return (
+      <button type="submit" className={className} disabled={props.disabled}>
+        {props.children}
+      </button>
+    );
   }
 
   if (props.type === 'reset') {
-    return <button type="reset" className={className} disabled={props.disabled}>{props.children}</button>;
+    return (
+      <button type="reset" className={className} disabled={props.disabled}>
+        {props.children}
+      </button>
+    );
   }
 
-  return <button type="button" className={className} disabled={props.disabled}>{props.children}</button>;
+  return (
+    <button type="button" className={className} disabled={props.disabled}>
+      {props.children}
+    </button>
+  );
 }
 
 export { buttonVariants };

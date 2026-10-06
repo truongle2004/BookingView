@@ -1,7 +1,12 @@
 import { cn } from '@/utils/Cn';
 
 export function Card(props: React.ComponentProps<'div'>) {
-  return <div {...props} className={cn('rounded-xl border border-gray-200 bg-white shadow-sm', props.className)} />;
+  return (
+    <div
+      {...props}
+      className={cn('rounded-xl border border-gray-200 bg-white shadow-sm', props.className)}
+    />
+  );
 }
 
 export function CardHeader(props: React.ComponentProps<'div'>) {
