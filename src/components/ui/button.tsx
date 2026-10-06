@@ -27,34 +27,32 @@ export function Button(
   props: React.ComponentProps<'button'> &
     VariantProps<typeof buttonVariants> & { asChild?: boolean },
 ) {
-  const className = cn(
-    buttonVariants({ variant: props.variant, size: props.size }),
-    props.className,
-  );
+  const { asChild, children, className: customClassName, size, variant, ...buttonProps } = props;
+  const className = cn(buttonVariants({ variant, size }), customClassName);
 
-  if (props.asChild) {
-    return <Slot className={className}>{props.children}</Slot>;
+  if (asChild) {
+    return <Slot className={className}>{children}</Slot>;
   }
 
   if (props.type === 'submit') {
     return (
-      <button type="submit" className={className} disabled={props.disabled}>
-        {props.children}
+      <button {...buttonProps} type="submit" className={className}>
+        {children}
       </button>
     );
   }
 
   if (props.type === 'reset') {
     return (
-      <button type="reset" className={className} disabled={props.disabled}>
-        {props.children}
+      <button {...buttonProps} type="reset" className={className}>
+        {children}
       </button>
     );
   }
 
   return (
-    <button type="button" className={className} disabled={props.disabled}>
-      {props.children}
+    <button {...buttonProps} type="button" className={className}>
+      {children}
     </button>
   );
 }

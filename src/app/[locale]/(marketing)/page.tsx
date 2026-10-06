@@ -8,16 +8,13 @@ import {
   FiHeadphones,
   FiHome,
   FiMapPin,
-  FiSearch,
   FiSend,
   FiThumbsUp,
   FiTruck,
-  FiUsers,
 } from 'react-icons/fi';
+import { BookingSearchForm } from '@/components/BookingSearchForm';
 import { Button } from '@/components/ui/button';
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Checkbox } from '@/components/ui/checkbox';
-import { Input } from '@/components/ui/input';
 import { Link } from '@/libs/I18nNavigation';
 
 type IndexPageProps = { params: Promise<{ locale: string }> };
@@ -137,43 +134,22 @@ export default async function IndexPage(props: IndexPageProps) {
           aria-label={t('search_label')}
           className="relative z-10 mx-auto -mt-16 max-w-7xl px-4 sm:px-6 lg:px-8"
         >
-          <form className="grid gap-1 rounded-xl bg-[#ffb700] p-1 shadow-xl lg:grid-cols-[1.5fr_1fr_1fr_auto]">
-            <label className="flex min-h-16 items-center gap-3 rounded-lg bg-white px-4 text-gray-700">
-              <FiMapPin aria-hidden="true" className="shrink-0 text-2xl text-[#006ce4]" />
-              <span className="sr-only">{t('destination_label')}</span>
-              <Input
-                className="font-semibold"
-                type="search"
-                placeholder={t('destination_placeholder')}
-              />
-            </label>
-            <label className="flex min-h-16 items-center gap-3 rounded-lg bg-white px-4">
-              <FiCalendar aria-hidden="true" className="shrink-0 text-xl text-[#006ce4]" />
-              <span>
-                <span className="block text-xs text-gray-500">{t('check_in')}</span>
-                <span className="font-semibold">{t('add_dates')}</span>
-              </span>
-              <input className="sr-only" type="date" aria-label={t('check_in')} />
-            </label>
-            <button
-              className="flex min-h-16 items-center gap-3 rounded-lg bg-white px-4 text-left"
-              type="button"
-            >
-              <FiUsers aria-hidden="true" className="shrink-0 text-xl text-[#006ce4]" />
-              <span>
-                <span className="block text-xs text-gray-500">{t('guests_label')}</span>
-                <span className="font-semibold">{t('guests_value')}</span>
-              </span>
-            </button>
-            <Button className="min-h-16 font-bold" size="lg" type="submit">
-              <FiSearch aria-hidden="true" />
-              {t('search_button')}
-            </Button>
-          </form>
-          <label className="mt-3 flex items-center gap-2 text-sm text-gray-700">
-            <Checkbox />
-            {t('work_trip')}
-          </label>
+          <BookingSearchForm
+            labels={{
+              addDates: t('add_dates'),
+              adults: t('adults'),
+              children: t('children'),
+              checkIn: t('check_in'),
+              checkOut: t('check_out'),
+              destination: t('destination_label'),
+              destinationPlaceholder: t('destination_placeholder'),
+              done: t('done'),
+              guests: t('guests_label'),
+              rooms: t('rooms'),
+              search: t('search_button'),
+              workTrip: t('work_trip'),
+            }}
+          />
         </section>
 
         <div className="mx-auto max-w-7xl space-y-16 px-4 py-12 sm:px-6 lg:px-8">
